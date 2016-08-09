@@ -6,5 +6,10 @@
   <label>
     Goal <textarea name="goal[body]" rows="8" cols="40"> <%= @goal.body %> </textarea>
   </label>
+  <input type="hidden" name="goal[completed]" value="false">
+  <label><input name="goal[completed]" type="checkbox"
+    <%= @goal.completed ? "checked" : "" %>
+    > Completed </label><br>
+
 <input type="submit" value="Edit Goal">
 </form>

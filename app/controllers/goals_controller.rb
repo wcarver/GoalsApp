@@ -4,6 +4,7 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     @goal.user = current_user
+    @goal.completed = false
     if @goal.save
       redirect_to user_url(current_user)
     else
@@ -42,7 +43,7 @@ class GoalsController < ApplicationController
   private
 
   def find_goal
-    @goal ||= Goal.find(params[:id])
+    @goal ||= Goal.find(params[:id].to_i)
   end
 
   def owns_goal?
@@ -55,7 +56,7 @@ class GoalsController < ApplicationController
 
 
   def goal_params
-    params.require(:goal).permit(:body, :private)
+    params.require(:goal).permit(:body, :private, :completed)
   end
 
 
