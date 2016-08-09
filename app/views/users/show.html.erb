@@ -1,0 +1,11 @@
+<h1> <%= @user.username %> </h1>
+
+<% @goals.each do |g| %>
+  <li><%= g.body %>
+  <%=link_to "Edit Goal", edit_goal_url(g) if current_user.id == g.user_id%>
+  <%=link_to "Delete Goal", goal_url(g), method: :delete if current_user.id == g.user_id%>
+</li>
+<% end %>
+
+
+<%=link_to "Add Goal", new_goal_url %>
